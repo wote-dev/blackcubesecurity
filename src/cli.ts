@@ -12,7 +12,7 @@ const program = new Command();
 program
   .name('blackcube')
   .description('Scan codebases for exposed secrets and common security vulnerabilities')
-  .version('1.0.0');
+  .version('1.0.3');
 
 program
   .command('scan')
