@@ -33,9 +33,9 @@ npx blackcube-security scan
 
 ## Demo
 
-![BlackCube demo](./docs/demo.gif)
+![BlackCube demo](./demo.gif)
 
-_A demo GIF should show secrets being flagged from working tree and git history._
+_The demo shows secrets being flagged from the working tree and git history._
 
 ## What BlackCube Checks
 
