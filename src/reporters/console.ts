@@ -50,6 +50,15 @@ export function renderConsole(result: ScanOutput, verbose = false): void {
   console.log(MUTED('└───────────────────────────────────────────────────────'));
   console.log('');
 
+  if (!total) {
+    console.log(chalk.greenBright('CLEAN — no blocking issues found.'));
+    console.log('');
+    return;
+  }
+
+  console.log(MUTED(summaryLine));
+  console.log('');
+
   (['critical', 'high', 'medium', 'low'] as Severity[]).forEach((level) => {
     const items = sortFindings(grouped[level]);
     if (!items.length) return;
@@ -64,12 +73,6 @@ export function renderConsole(result: ScanOutput, verbose = false): void {
       console.log('');
     });
   });
-
-  if (!total) {
-    console.log(chalk.greenBright('CLEAN — no blocking issues found.'));
-  } else {
-    console.log(MUTED(summaryLine));
-  }
 
   console.log('');
 }
