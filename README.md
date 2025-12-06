@@ -1,6 +1,6 @@
 # BlackCube Security
 
-Security linting for AI-generated code. Ship fast, catch exposed secrets and common vulnerabilities before they reach production. Published to npm as `blackcube` (v1.0.3).
+Security linting for AI-generated code. Ship fast, catch exposed secrets and common vulnerabilities before they reach production. Published to npm as `blackcube` (v1.0.6).
 
 ## Why
 
@@ -35,7 +35,7 @@ npx blackcube-security scan
 
 ![BlackCube demo](./demo.gif)
 
-_The demo shows secrets being flagged from the working tree and git history._
+_The demo shows how the secuirty linter works._
 
 ## What BlackCube Checks
 
