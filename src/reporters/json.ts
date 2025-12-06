@@ -1,11 +1,14 @@
+import { createRequire } from 'module';
 import { ScanOutput } from '../types.js';
-import packageJson from '../../package.json' with { type: 'json' };
+
+const require = createRequire(import.meta.url);
+const packageJson = require('../../package.json') as { version?: string };
 
 export function renderJson(result: ScanOutput): string {
   const payload = {
     meta: {
       tool: 'blackcube-security',
-      version: packageJson.version,
+      version: packageJson.version ?? 'unknown',
       generatedAt: new Date().toISOString()
     },
     findings: result.findings,
