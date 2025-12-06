@@ -78,3 +78,4 @@ export async function gatherTextFiles(root: string): Promise<{ files: TextFile[]
   return { files, skipped };
 }
 
+
