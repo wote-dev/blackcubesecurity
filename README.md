@@ -1,6 +1,6 @@
 # BlackCube Security
 
-Security linting for AI-generated code. Ship fast, catch exposed secrets and common vulnerabilities before they reach production.
+Security linting for AI-generated code. Ship fast, catch exposed secrets and common vulnerabilities before they reach production. Published to npm as `blackcube` (v1.0.1).
 
 ## Why
 
@@ -27,7 +27,7 @@ npx blackcube scan --severity high
 # Verbose mode with code snippets
 npx blackcube scan --verbose
 
-# Legacy alias (if installed locally)
+# Legacy alias (if already installed locally)
 npx blackcube-security scan
 ```
 
@@ -58,18 +58,18 @@ CRITICAL 03  HIGH 02  MEDIUM 01  LOW 00
 │ duration    4200ms
 └───────────────────────────────────────────────
 
-CRITICAL (3 issues)
+[!!] CRITICAL (3 issues)
   • Exposed AWS Secret Key
     File: src/config.js:12
     Pattern: AWS_SECRET_ACCESS_KEY="AKIAI..."
     Fix: Move to .env, add .env to .gitignore, rotate key immediately
 
-HIGH (2 issues)
+[! ] HIGH (2 issues)
   • .env file not in .gitignore
     File: .env
     Fix: Add .env to .gitignore immediately
 
-MEDIUM (1 issue)
+[- ] MEDIUM (1 issue)
   • Potential SQL injection
     File: api/users.js:45
     Code: SELECT * FROM users WHERE id = ${req.params.id}
