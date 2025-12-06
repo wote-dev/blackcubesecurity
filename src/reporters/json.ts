@@ -1,10 +1,11 @@
 import { ScanOutput } from '../types.js';
+import packageJson from '../../package.json' with { type: 'json' };
 
 export function renderJson(result: ScanOutput): string {
   const payload = {
     meta: {
       tool: 'blackcube-security',
-      version: '1.0.0',
+      version: packageJson.version,
       generatedAt: new Date().toISOString()
     },
     findings: result.findings,
