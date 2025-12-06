@@ -1,0 +1,58 @@
+[
+  {
+    "id": "sql-injection",
+    "pattern": "(SELECT|INSERT|UPDATE|DELETE)[^;\\n]*\\${[^}]+}",
+    "severity": "medium",
+    "description": "Possible SQL injection via string interpolation",
+    "fix": "Use parameterized queries or query builders with bound parameters"
+  },
+  {
+    "id": "sql-concat",
+    "pattern": "(SELECT|INSERT|UPDATE|DELETE)[^;\\n]*['\\\"]\\s*\\+\\s*",
+    "severity": "medium",
+    "description": "SQL query built via string concatenation",
+    "fix": "Use placeholders and parameter binding"
+  },
+  {
+    "id": "xss-innerhtml",
+    "pattern": "\\.innerHTML\\s*=",
+    "severity": "medium",
+    "description": "Direct innerHTML assignment could enable XSS",
+    "fix": "Sanitize content or use textContent"
+  },
+  {
+    "id": "xss-dangerouslysetinnerhtml",
+    "pattern": "dangerouslySetInnerHTML\\s*:\\s*{\\s*__html\\s*:",
+    "severity": "medium",
+    "description": "dangerouslySetInnerHTML without sanitization",
+    "fix": "Ensure content is sanitized or avoided"
+  },
+  {
+    "id": "eval",
+    "pattern": "\\beval\\s*\\(",
+    "severity": "high",
+    "description": "Use of eval() is unsafe",
+    "fix": "Avoid eval; refactor to safer alternatives"
+  },
+  {
+    "id": "function-ctor",
+    "pattern": "new Function\\s*\\(",
+    "severity": "high",
+    "description": "Function constructor used dynamically",
+    "fix": "Avoid dynamic code execution"
+  },
+  {
+    "id": "weak-crypto",
+    "pattern": "crypto\\.(createHash|createHmac)\\(['\\\"](md5|sha1)['\\\"]\\)",
+    "severity": "high",
+    "description": "Weak hashing algorithm used",
+    "fix": "Use bcrypt, scrypt, argon2, or SHA-256+ with salt"
+  },
+  {
+    "id": "hardcoded-credentials",
+    "pattern": "(username|user|login)\\s*[=:]\\s*['\"][^'\"\\s]{3,}['\"]\\s*[,;]?\\s*(password|pass)\\s*[=:]\\s*['\"][^'\"\\s]{3,}['\"]",
+    "severity": "high",
+    "description": "Hardcoded username/password pair",
+    "fix": "Remove credentials from code and load from secrets"
+  }
+]
