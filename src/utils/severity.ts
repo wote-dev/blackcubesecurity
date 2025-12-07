@@ -50,3 +50,6 @@ export function groupBySeverity(findings: Finding[]): Record<Severity, Finding[]
 }
 
 
+
+
+

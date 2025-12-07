@@ -1,6 +1,6 @@
 {
   "name": "blackcube",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Security linting for AI-generated code - catch exposed secrets and vulnerabilities",
   "type": "module",
   "bin": {
@@ -41,4 +41,3 @@
     "typescript": "^5.4.0"
   }
 }
-

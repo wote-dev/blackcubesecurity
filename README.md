@@ -1,6 +1,6 @@
 # BlackCube Security
 
-Security linting for AI-generated code. Ship fast, catch exposed secrets and common vulnerabilities before they reach production. Published to npm as `blackcube` (v1.0.7).
+Security linting for AI-generated code. Ship fast, catch exposed secrets and common vulnerabilities before they reach production. Published to npm as `blackcube` (v1.0.8).
 
 ## Why
 
@@ -18,6 +18,9 @@ npx blackcube scan ./path/to/repo
 # JSON output for CI/CD
 npx blackcube scan --json
 
+# Quiet summary (stats only)
+npx blackcube scan --summary-only
+
 # Skip git history (faster)
 npx blackcube scan --skip-history
 
@@ -26,6 +29,15 @@ npx blackcube scan --severity high
 
 # Verbose mode with code snippets
 npx blackcube scan --verbose
+
+# Limit output to top findings
+npx blackcube scan --top 20
+
+# Use a custom baseline file (suppress known findings)
+npx blackcube scan --baseline .blackcube-baseline.json
+
+# Update baseline with current findings
+npx blackcube scan --update-baseline
 
 # Legacy alias (if already installed locally)
 npx blackcube-security scan
@@ -45,6 +57,24 @@ _The demo shows how the secuirty linter works._
 - Code vulnerabilities: SQL injection concatenation, innerHTML/dangerouslySetInnerHTML XSS sinks, eval/Function constructors, weak crypto (md5/sha1), hardcoded credentials
 - Dependency red flags: event-stream, vulnerable minimist/lodash versions, unpinned dependencies
 - Binary/large files are skipped automatically
+
+## Key Flags (CLI)
+
+- `--summary-only` print stats + totals only (no listing)
+- `--verbose` include code snippets
+- `--top <n>` / `--max-findings <n>` limit how many findings are printed
+- `--no-color` disable ANSI colors (CI-friendly)
+- `--max-bytes <n>` cap per-file size (bytes, default 1MB)
+- `--include <globs...>` / `--exclude <globs...>` adjust what files are scanned
+- `--skip-history` / `--commit-depth <n>` control git history scanning
+- `--baseline <path>` suppress findings present in a baseline file (default `.blackcube-baseline.json`)
+- `--update-baseline` write current findings to the baseline file
+- `--json` emit JSON; `--severity <level>` to filter output
+
+## Ignore & Baseline
+
+- Ignore file: add globs to `.blackcubeignore` to skip paths (similar to `.gitignore`).
+- Baseline: store known/accepted findings in `.blackcube-baseline.json` (or a custom path via `--baseline`). Those findings are suppressed on subsequent runs. Use `--update-baseline` after triage to refresh it.
 
 ## Example Output
 

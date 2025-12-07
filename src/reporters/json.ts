@@ -12,7 +12,8 @@ export function renderJson(result: ScanOutput): string {
       generatedAt: new Date().toISOString()
     },
     findings: result.findings,
-    stats: result.stats
+    stats: result.stats,
+    timings: result.timings
   };
 
   return JSON.stringify(payload, null, 2);

@@ -21,6 +21,11 @@ export interface ScanOptions {
   verbose?: boolean;
   json?: boolean;
   commitDepth?: number;
+  maxBytes?: number;
+  includeGlobs?: string[];
+  excludeGlobs?: string[];
+  baselinePath?: string;
+  onPhase?: (phase: string, stage: 'start' | 'end') => void;
 }
 
 export interface TextFile {
@@ -36,6 +41,10 @@ export interface ScanOutput {
     historyScanned: boolean;
     durationMs: number;
   };
+  timings?: Record<string, number>;
 }
+
+
+
 
 
